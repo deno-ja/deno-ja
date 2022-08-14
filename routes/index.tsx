@@ -14,7 +14,7 @@ export default function Home() {
   return (
     <div class={tw`p-4 mx-auto max-w-screen-md space-y-32`}>
       <div class={tw`flex flex-col items-center mt-20`}>
-        <img src="/denoja-logo.svg" class={tw`w-80`} alt="" />
+        <img src="/denoja-logo.svg" class={tw`w-80`} alt="deno-jaのロゴ" />
         <p class={tw`text-xl text-gray-700`}>
           Deno Japan Users Group
         </p>
