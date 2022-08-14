@@ -8,8 +8,10 @@ import { Head } from "$fresh/src/runtime/head.ts";
 
 const latest = (await getConnpassEvent())[0];
 
+const day = ["日", "月", "火", "水", "木", "金", "土"];
+
 const toDateStr = (date: Date) => {
-  return format(date, "yyyy-MM-dd");
+  return format(date, "yyyy-MM-dd") + `(${day[date.getDay()]})`;
 };
 const toTimeStr = new Intl.DateTimeFormat("ja", {
   timeZone: "Asia/Tokyo",
@@ -130,12 +132,12 @@ function Denobata() {
 
 function Contents() {
   return (
-    <div class={tw`bg-gray-100 p-4 mt-20`}>
-      <h2 class={tw`text-3xl text-center mt-10 text-gray-400`}>
+    <div class={tw`bg-gray-100 px-8 py-16 mt-20`}>
+      <h2 class={tw`text-3xl text-center text-gray-400`}>
         Contents by deno-ja
       </h2>
 
-      <div class={tw`p-4 max-w-screen-md mx-auto space-y-10 mt-10`}>
+      <div class={tw`max-w-screen-md mx-auto space-y-10 mt-10`}>
         {contents.map((content) => (
           <div class={tw`flex gap-4`}>
             <div
