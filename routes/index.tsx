@@ -1,42 +1,57 @@
 /** @jsx h */
 import { h } from "preact";
 import { tw } from "@twind";
+import { getConnpassEvent } from "./api/events.ts";
+import { format } from "https://deno.land/std@0.152.0/datetime/mod.ts";
 
+const latest = (await getConnpassEvent())[0];
 
-const json = await (await fetch("https://connpass.com/api/v1/event/?series_id=7931")).json()
-
-interface Event {
-  event_id: number
-  title: string
-  catch: string
-  started_at: string
-  ended_at: string
-  limit: number
-  event_type: string
-  accepted: number
-  waiting: number
-  updated_at: string
-  event_url: string
-  place: string
-  address: string
-}
-
-const latest: Event = json.events[0]
-
-console.log(
-  latest.title,
-  latest.event_url,
-  latest.started_at
-)
+const toDateStr = (date: Date) => {
+  return format(date, "yyyy-MM-dd HH:mm");
+};
 
 export default function Home() {
   return (
     <div class={tw`p-4 mx-auto max-w-screen-md`}>
-      <h1 class={tw`text-4xl font-bold text-center`}>deno-ja</h1>
       <div>
-        <h2 class={tw`text-2xl font-bold text-center`}>{latest.title}</h2>
-        <p class={tw`text-center`}>{latest.started_at}</p>
-        <p class={tw`text-center`}>{latest.event_url}</p>
+        <h1 class={tw`text-4xl font-bold text-center`}>deno-ja</h1>
+      </div>
+
+      <div>
+        {latest &&
+          (
+            <div class={tw`flex items-center`}>
+              <div class={tw``}>
+                <a href={latest.event_url}>
+                  <img
+                    class={tw`w-full`}
+                    src="/denobata-title.png"
+                    alt="denoばた会議タイトルロゴ"
+                  />
+                </a>
+                <a href={latest.event_url}>
+                  <h2
+                    class={tw`text-xl font-bold text-center hover:text-underline`}
+                  >
+                    {latest.title}
+                  </h2>
+                </a>
+                <p class={tw`text-center`}>
+                  {toDateStr(new Date(latest.started_at))}〜
+                </p>
+              </div>
+              <div>
+                <img
+                  class={tw`w-full`}
+                  src="/denobata-illust.png"
+                  alt="denoばた会議イメージ図"
+                />
+              </div>
+            </div>
+          )}
+      </div>
+
+      <div>
       </div>
     </div>
   );
