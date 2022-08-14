@@ -8,8 +8,10 @@ import { Head } from "$fresh/src/runtime/head.ts";
 
 const latest = (await getConnpassEvent())[0];
 
+const day = ["日", "月", "火", "水", "木", "金", "土"];
+
 const toDateStr = (date: Date) => {
-  return format(date, "yyyy-MM-dd");
+  return format(date, "yyyy-MM-dd") + `(${day[date.getDay()]})`;
 };
 const toTimeStr = new Intl.DateTimeFormat("ja", {
   timeZone: "Asia/Tokyo",
