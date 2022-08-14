@@ -11,18 +11,43 @@ const toDateStr = (date: Date) => {
   return format(date, "yyyy-MM-dd HH:mm");
 };
 
-const contents = [
+interface Content {
+  title: string;
+  icon: typeof Icons.Academic;
+  href: string;
+  description: string;
+  author: string;
+  authorUrl?: string;
+  class: string;
+}
+const contents: Content[] = [
   {
-    title: "Connpass",
+    title: "Effective Deno",
     icon: Icons.Academic,
-    href: "https://connpass.com/",
-    description: `Connpass`,
-    author: "connpass",
-    authorUrl: "https://connpass.com/",
-  }
-]
-
-
+    href: "https://zenn.dev/uki00a/books/effective-deno",
+    description: `Denoを有効に活用するためのノウハウを一通り得られる包括的なドキュメントです。`,
+    author: "uki00a",
+    authorUrl: "https://twitter.com/uki00a",
+    class: "bg-green-200 text-green-700",
+  },
+  {
+    title: "週刊Deno",
+    icon: Icons.NewsPaper,
+    href: "https://uki00a.github.io/deno-weekly/",
+    description: `毎週日曜日にその週のDenoの最新情報を発信しています。`,
+    author: "uki00a",
+    authorUrl: "https://twitter.com/uki00a",
+    class: "bg-blue-200 text-blue-700",
+  },
+  {
+    title: "deno-ja Scrapbox",
+    icon: Icons.Pencil,
+    href: "https://scrapbox.io/deno-ja/",
+    description: `Denoに関してなんでもまとめているWiki的なページです。deno-jaコミュニティで管理されています。`,
+    author: "deno-ja",
+    class: "bg-yellow-200 text-yellow-700",
+  },
+];
 
 export default function Home() {
   return (
@@ -84,62 +109,40 @@ export default function Home() {
         </div>
       </div>
       <div class={tw`bg-gray-100 p-4 mt-20`}>
-        <h2 class={tw`text-xl font-bold text-center mt-10`}>
+        <h2 class={tw`text-3xl text-center mt-10 text-gray-400`}>
           Contents by deno-ja
         </h2>
 
         <div class={tw`p-4 max-w-screen-md mx-auto space-y-10 mt-10`}>
-          <div class={tw`flex gap-4`}>
-            <div
-              class={tw`inline-block p-3 rounded-full bg-green-200 text-green-700`}
-            >
-              <Icons.Academic />
-            </div>
-            <div>
-              <div>
-                <a
-                  href="https://zenn.dev/uki00a/books/effective-deno"
-                  class={tw`font-bold hover:text-underline`}
-                >
-                  Effective Deno
-                </a>{" "}
-                by{" "}
-                <a
-                  href="https://twitter.com/uki00a"
-                  class={tw`font-bold hover:text-underline`}
-                >
-                  uki00a
-                </a>
+          {contents.map((content) => (
+            <div class={tw`flex gap-4`}>
+              <div
+                class={tw`inline-block p-3 rounded-full h-12 w-12 ${content.class}`}
+              >
+                <content.icon />
               </div>
               <div>
-                Denoを有効に活用するためのノウハウを一通り得られる包括的なドキュメントです。
+                <div>
+                  <a
+                    href={content.href}
+                    class={tw`font-bold hover:text-underline`}
+                  >
+                    {content.title}
+                  </a>{" "}
+                  by{" "}
+                  <a
+                    href={content.authorUrl}
+                    class={tw`hover:text-underline`}
+                  >
+                    {content.author}
+                  </a>
+                </div>
+                <div class={tw`pt-2 text-gray-800`}>
+                  {content.description}
+                </div>
               </div>
             </div>
-          </div>
-
-          <div>
-            <div>
-              <a href="https://uki00a.github.io/deno-weekly/">
-                週刊Deno
-              </a>{" "}
-              by uki00a
-            </div>
-            <div>
-              毎週日曜日にその週のDenoの最新情報を発信しています。
-            </div>
-          </div>
-
-          <div>
-            <div>
-              <a href="https://scrapbox.io/deno-ja/">
-                deno-ja Scrapbox
-              </a>{" "}
-              by deno-ja
-            </div>
-            <div>
-              Denoに関してなんでもまとめているWiki的なページです。deno-jaコミュニティで管理されています。
-            </div>
-          </div>
+          ))}
         </div>
       </div>
 
