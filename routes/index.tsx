@@ -39,7 +39,7 @@ export default function Home() {
           (
             <div class={tw`flex items-center`}>
               <div class={tw``}>
-                <a href={latest.event_url}>
+                <a href={latest.event_url} tabIndex={-1}>
                   <img
                     class={tw`w-full`}
                     src="/denobata-title.png"
