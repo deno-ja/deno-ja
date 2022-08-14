@@ -3,51 +3,13 @@ import { h } from "preact";
 import { tw } from "@twind";
 import { getConnpassEvent } from "./api/events.ts";
 import { format } from "https://deno.land/std@0.152.0/datetime/mod.ts";
-import * as Icons from "../components/Icons.tsx";
+import { contents } from "../data/contents.ts";
 
 const latest = (await getConnpassEvent())[0];
 
 const toDateStr = (date: Date) => {
   return format(date, "yyyy-MM-dd HH:mm");
 };
-
-interface Content {
-  title: string;
-  icon: typeof Icons.Academic;
-  href: string;
-  description: string;
-  author: string;
-  authorUrl?: string;
-  class: string;
-}
-const contents: Content[] = [
-  {
-    title: "Effective Deno",
-    icon: Icons.Academic,
-    href: "https://zenn.dev/uki00a/books/effective-deno",
-    description: `Denoを有効に活用するためのノウハウを一通り得られる包括的なドキュメントです。`,
-    author: "uki00a",
-    authorUrl: "https://twitter.com/uki00a",
-    class: "bg-green-200 text-green-700",
-  },
-  {
-    title: "週刊Deno",
-    icon: Icons.NewsPaper,
-    href: "https://uki00a.github.io/deno-weekly/",
-    description: `毎週日曜日にその週のDenoの最新情報を発信しています。`,
-    author: "uki00a",
-    authorUrl: "https://twitter.com/uki00a",
-    class: "bg-blue-200 text-blue-700",
-  },
-  {
-    title: "deno-ja Scrapbox",
-    icon: Icons.Pencil,
-    href: "https://scrapbox.io/deno-ja/",
-    description: `Denoに関してなんでもまとめているWiki的なページです。deno-jaコミュニティで管理されています。`,
-    author: "deno-ja",
-    class: "bg-yellow-200 text-yellow-700",
-  },
-];
 
 export default function Home() {
   return (
@@ -62,25 +24,29 @@ export default function Home() {
           <p class={tw`mt-32 text-gray-700`}>
             deno-jaは、Denoの日本ユーザによるオンラインコミュニティです。<br />
             主にSlack上で情報共有や雑談などの交流を行なっています。<br />
-            また、月に一回「<a href="https://deno-ja.connpass.com/" class={tw`font-bold text-center hover:text-underline`}>Denoばた会議</a>」というオンラインイベントを行なっています。<br />
+            また、月に一回「<a
+              href="https://deno-ja.connpass.com/"
+              class={tw`font-bold text-center hover:text-underline`}
+            >
+              Denoばた会議
+            </a>」というオンラインイベントを行なっています。<br />
             どなたでも参加できますので、気軽に覗いてみてください。<br />
           </p>
 
           <div class={tw`mt-12 flex text-center gap-6`}>
-          <a
-            class={tw`block w-48 px-6 py-3 no-underline bg-green-100 border-2 border-black rounded hover:bg-green-200 hover:underline shadow-md`}
-            href="https://zenn.dev/uki00a/books/effective-deno/viewer/what-is-deno"
-          >
-            Deno とは？
-          </a>
-          <a
-            class={tw`block w-48 px-6 py-3 no-underline bg-white border-2 border-black rounded hover:bg-gray-100 hover:underline shadow-md`}
-            href="https://scrapbox.io/deno-ja/Slack%E3%81%AE%E5%8F%82%E5%8A%A0%E6%96%B9%E6%B3%95"
-          >
-            Slack に参加する
-          </a>
-        </div>
-
+            <a
+              class={tw`block w-48 px-6 py-3 no-underline bg-green-100 border-2 border-black rounded hover:bg-green-200 hover:underline shadow-md`}
+              href="https://zenn.dev/uki00a/books/effective-deno/viewer/what-is-deno"
+            >
+              Deno とは？
+            </a>
+            <a
+              class={tw`block w-48 px-6 py-3 no-underline bg-white border-2 border-black rounded hover:bg-gray-100 hover:underline shadow-md`}
+              href="https://scrapbox.io/deno-ja/Slack%E3%81%AE%E5%8F%82%E5%8A%A0%E6%96%B9%E6%B3%95"
+            >
+              Slack に参加する
+            </a>
+          </div>
         </div>
 
         <div>
@@ -156,16 +122,15 @@ export default function Home() {
       </div>
 
       <footer class={tw`p-12 max-w-screen-md mx-auto text-center`}>
-            <ul class={tw`flex gap-4 justify-center`}>
-              <li class={tw`font-bold hover:text-underline`}>
-                <a href="https://deno.land/">Deno公式</a>
-              </li>
+        <ul class={tw`flex gap-4 justify-center`}>
+          <li class={tw`font-bold hover:text-underline`}>
+            <a href="https://deno.land/">Deno公式</a>
+          </li>
 
-              <li class={tw`font-bold hover:text-underline`}>
-                <a href="https://github.com/deno-ja/deno-ja">Source</a>
-              </li>
-            </ul>
-
+          <li class={tw`font-bold hover:text-underline`}>
+            <a href="https://github.com/deno-ja/deno-ja">Source</a>
+          </li>
+        </ul>
 
         <p class={tw`mt-4`}>
           © Deno Japan Users Group some rights reserved.
