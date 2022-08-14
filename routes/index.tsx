@@ -59,26 +59,28 @@ export default function Home() {
             Deno Japan Users Group
           </p>
 
-          <p class={tw`mt-20 text-gray-700`}>
+          <p class={tw`mt-32 text-gray-700`}>
             deno-jaは、Denoの日本ユーザによるオンラインコミュニティです。<br />
             主にSlack上で情報共有や雑談などの交流を行なっています。<br />
             また、月に一回「<a href="https://deno-ja.connpass.com/" class={tw`font-bold text-center hover:text-underline`}>Denoばた会議</a>」というオンラインイベントを行なっています。<br />
             どなたでも参加できますので、気軽に覗いてみてください。<br />
           </p>
-        </div>
-        <div class={tw`mx-auto flex max-w-screen-sm text-center gap-6`}>
+
+          <div class={tw`mt-12 flex text-center gap-6`}>
           <a
-            class={tw`block flex-1 max-w- px-6 py-3 no-underline bg-green-100 border-2 border-black rounded hover:bg-green-200 hover:underline shadow-md`}
+            class={tw`block w-48 px-6 py-3 no-underline bg-green-100 border-2 border-black rounded hover:bg-green-200 hover:underline shadow-md`}
             href="https://zenn.dev/uki00a/books/effective-deno/viewer/what-is-deno"
           >
             Deno とは？
           </a>
           <a
-            class={tw`block flex-1 px-6 py-3 no-underline bg-white border-2 border-black rounded hover:bg-gray-100 hover:underline shadow-md`}
+            class={tw`block w-48 px-6 py-3 no-underline bg-white border-2 border-black rounded hover:bg-gray-100 hover:underline shadow-md`}
             href="https://scrapbox.io/deno-ja/Slack%E3%81%AE%E5%8F%82%E5%8A%A0%E6%96%B9%E6%B3%95"
           >
             Slack に参加する
           </a>
+        </div>
+
         </div>
 
         <div>
