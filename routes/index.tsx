@@ -12,9 +12,12 @@ const toDateStr = (date: Date) => {
 
 export default function Home() {
   return (
-    <div class={tw`p-4 mx-auto max-w-screen-md`}>
-      <div>
-        <h1 class={tw`text-4xl font-bold text-center`}>deno-ja</h1>
+    <div class={tw`p-4 mx-auto max-w-screen-md space-y-32`}>
+      <div class={tw`flex flex-col items-center mt-20`}>
+        <img src="/denoja-logo.svg" class={tw`w-80`} alt="" />
+        <p class={tw`text-xl text-gray-700`}>
+          Deno Japan Users Group
+        </p>
       </div>
 
       <div>
