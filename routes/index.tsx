@@ -8,7 +8,27 @@ import { contents } from "../data/contents.ts";
 const latest = (await getConnpassEvent())[0];
 
 const toDateStr = (date: Date) => {
-  return format(date, "yyyy-MM-dd HH:mm");
+  return format(date, "yyyy-MM-dd");
+};
+const toTimeStr = (date: Date) => {
+  return format(date, "HH:mm");
+};
+
+const remainDate = (date: Date) => {
+  const diff = date.getTime() - new Date().getTime();
+  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+  return days;
+};
+
+const remainStr = (date: Date) => {
+  const days = remainDate(date);
+  if (days < 0) {
+    return "終了しました";
+  } else if (days === 0) {
+    return "今日";
+  } else {
+    return `あと${days}日`;
+  }
 };
 
 function Introduction() {
@@ -70,9 +90,25 @@ function Denobata() {
                   {latest.title}
                 </h2>
               </a>
-              <p class={tw`text-center`}>
-                {toDateStr(new Date(latest.started_at))}〜
-              </p>
+              <div class={tw`text-center mt-4`}>
+                <span class={tw`text-xl`}>
+                  {toDateStr(new Date(latest.started_at))}
+                </span>
+                <span class={tw`ml-2 text-green-600`}>
+                  {remainStr(new Date(latest.started_at))}
+                </span>
+                <p class={tw`text-gray-500 mx-2 text-center`}>
+                  {toTimeStr(new Date(latest.started_at))}〜
+                </p>
+              </div>
+              <div class={tw`mt-4 text-center`}>
+                <a
+                  class={tw`px-12 py-3 no-underline bg-green-100 border-2 border-black rounded hover:bg-green-200 hover:underline shadow-md`}
+                  href={latest.event_url}
+                >
+                  参加登録
+                </a>
+              </div>
             </div>
             <div>
               <img
