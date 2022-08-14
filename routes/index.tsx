@@ -58,8 +58,15 @@ export default function Home() {
           <p class={tw`text-xl text-gray-700`}>
             Deno Japan Users Group
           </p>
+
+          <p class={tw`mt-20 text-gray-700`}>
+            deno-jaは、Denoの日本ユーザによるオンラインコミュニティです。<br />
+            主にSlack上で情報共有や雑談などの交流を行なっています。<br />
+            また、月に一回「<a href="https://deno-ja.connpass.com/" class={tw`font-bold text-center hover:text-underline`}>Denoばた会議</a>」というオンラインイベントを行なっています。<br />
+            どなたでも参加できますので、気軽に覗いてみてください。<br />
+          </p>
         </div>
-        <div class={tw`mt-12 mx-auto flex max-w-screen-sm text-center gap-6`}>
+        <div class={tw`mx-auto flex max-w-screen-sm text-center gap-6`}>
           <a
             class={tw`block flex-1 max-w- px-6 py-3 no-underline bg-green-100 border-2 border-black rounded hover:bg-green-200 hover:underline shadow-md`}
             href="https://zenn.dev/uki00a/books/effective-deno/viewer/what-is-deno"
@@ -146,12 +153,20 @@ export default function Home() {
         </div>
       </div>
 
-      <footer class={tw`p-4 max-w-screen-md mx-auto`}>
-        <p>
+      <footer class={tw`p-12 max-w-screen-md mx-auto text-center`}>
+            <ul class={tw`flex gap-4 justify-center`}>
+              <li class={tw`font-bold hover:text-underline`}>
+                <a href="https://deno.land/">Deno公式</a>
+              </li>
+
+              <li class={tw`font-bold hover:text-underline`}>
+                <a href="https://github.com/deno-ja/deno-ja">Source</a>
+              </li>
+            </ul>
+
+
+        <p class={tw`mt-4`}>
           © Deno Japan Users Group some rights reserved.
-        </p>
-        <p>
-          Released under the MIT License.
         </p>
       </footer>
     </div>
