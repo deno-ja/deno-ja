@@ -41,19 +41,22 @@ function Introduction() {
         Deno Japan Users Group
       </p>
 
-      <p class={tw`mt-32 text-gray-700`}>
-        deno-jaは、Denoの日本ユーザによるオンラインコミュニティです。<br />
-        主にSlack上で情報共有や雑談などの交流を行なっています。<br />
-        また、月に一回「<a
-          href="https://deno-ja.connpass.com/"
-          class={tw`font-bold text-center hover:text-underline`}
-        >
-          Denoばた会議
-        </a>」というオンラインイベントを行なっています。<br />
-        どなたでも参加できますので、気軽に覗いてみてください。<br />
-      </p>
+      <div class={tw`mt-32 max-w-md text-gray-700 space-y-4`}>
+        <p>
+          deno-jaは、Denoの日本ユーザによるオンラインコミュニティです。 主にSlack上で情報共有や雑談などの交流を行なっています。
+        </p>
 
-      <div class={tw`mt-12 flex text-center gap-6`}>
+        <p>
+          また、月に一回「<a
+            href="https://deno-ja.connpass.com/"
+            class={tw`font-bold text-center hover:text-underline`}
+          >
+            Denoばた会議
+          </a>」というオンラインイベントを行なっています。 どなたでも参加できますので、気軽に覗いてみてください。
+        </p>
+      </div>
+
+      <div class={tw`mt-12 flex flex-col md:flex-row text-center gap-6`}>
         <a
           class={tw`block w-48 px-6 py-3 no-underline bg-green-100 border-2 border-black rounded hover:bg-green-200 hover:underline shadow-md`}
           href="https://zenn.dev/uki00a/books/effective-deno/viewer/what-is-deno"
@@ -76,8 +79,8 @@ function Denobata() {
     <div>
       {latest &&
         (
-          <div class={tw`flex items-center`}>
-            <div class={tw``}>
+          <div class={tw`md:flex items-center`}>
+            <div>
               <a href={latest.event_url} tabIndex={-1}>
                 <img
                   class={tw`w-full`}
@@ -105,7 +108,7 @@ function Denobata() {
               </div>
               <div class={tw`mt-4 text-center`}>
                 <a
-                  class={tw`px-12 py-3 no-underline bg-green-100 border-2 border-black rounded hover:bg-green-200 hover:underline shadow-md`}
+                  class={tw`inline-block px-16 py-3 no-underline border-2 border-black rounded hover:bg-gray-100 hover:underline shadow-md`}
                   href={latest.event_url}
                 >
                   参加登録
