@@ -11,9 +11,10 @@ const latest = (await getConnpassEvent())[0];
 const toDateStr = (date: Date) => {
   return format(date, "yyyy-MM-dd");
 };
-const toTimeStr = (date: Date) => {
-  return format(date, "HH:mm");
-};
+const toTimeStr = new Intl.DateTimeFormat("ja", {
+  timeZone: "Asia/Tokyo",
+  timeStyle: "short",
+});
 
 const remainDate = (date: Date) => {
   const diff = date.getTime() - new Date().getTime();
@@ -99,7 +100,7 @@ function Denobata() {
                   {remainStr(new Date(latest.started_at))}
                 </span>
                 <p class={tw`text-gray-500 mx-2 text-center`}>
-                  {toTimeStr(new Date(latest.started_at))}〜
+                  {toTimeStr.format(new Date(latest.started_at))}〜
                 </p>
               </div>
               <div class={tw`mt-4 text-center`}>
