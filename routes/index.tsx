@@ -4,6 +4,7 @@ import { tw } from "@twind";
 import { getConnpassEvent } from "./api/events.ts";
 import { format } from "https://deno.land/std@0.152.0/datetime/mod.ts";
 import { contents } from "../data/contents.ts";
+import { Head } from "$fresh/src/runtime/head.ts";
 
 const latest = (await getConnpassEvent())[0];
 
@@ -168,6 +169,9 @@ function Contents() {
 export default function Home() {
   return (
     <div>
+      <Head>
+        <title>deno-ja | Deno Japan Users Group</title>
+      </Head>
       <div class={tw`p-4 mx-auto max-w-screen-md space-y-32`}>
         <Introduction />
         <Denobata />
