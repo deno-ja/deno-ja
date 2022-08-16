@@ -7,6 +7,7 @@ export interface ConnpassEvent {
 const timeout = 2000; // 2000ms
 
 export async function getConnpassEvent(): Promise<ConnpassEvent[]> {
+  // deno-lint-ignore no-explicit-any
   let json: any;
   const controller = new AbortController();
   const timer = setTimeout(() => {
