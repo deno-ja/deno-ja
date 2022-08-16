@@ -1,12 +1,15 @@
 /** @jsx h */
 import { h } from "preact";
 import { tw } from "@twind";
-import { getConnpassEvent } from "./api/events.ts";
+import { ConnpassEvent, getConnpassEvent } from "./api/events.ts";
 import { format } from "https://deno.land/std@0.152.0/datetime/mod.ts";
 import { contents } from "../data/contents.ts";
 import { Head } from "$fresh/src/runtime/head.ts";
 
-const latest = (await getConnpassEvent())[0];
+const latest: ConnpassEvent = (await getConnpassEvent())[0] ?? {
+  title: "Denoばた会議 Monthly",
+  event_url: "https://deno-ja.connpass.com/",
+};
 
 const day = ["日", "月", "火", "水", "木", "金", "土"];
 
@@ -39,22 +42,24 @@ function Introduction() {
   return (
     <div class={tw`flex flex-col items-center mt-20`}>
       <img src="/denoja-logo.svg" class={tw`w-80`} alt="deno-jaのロゴ" />
-      <p class={tw`text-xl text-gray-700`}>
-        Deno Japan Users Group
-      </p>
+      <p class={tw`text-xl text-gray-700`}>Deno Japan Users Group</p>
 
       <div class={tw`mt-32 max-w-md text-gray-700 space-y-4`}>
         <p>
-          deno-jaは、Denoの日本ユーザによるオンラインコミュニティです。 主にSlack上で情報共有や雑談などの交流を行なっています。
+          deno-jaは、Denoの日本ユーザによるオンラインコミュニティです。
+          主にSlack上で情報共有や雑談などの交流を行なっています。
         </p>
 
         <p>
-          また、月に一回「<a
+          また、月に一回「
+          <a
             href="https://deno-ja.connpass.com/"
             class={tw`font-bold text-center hover:text-underline`}
           >
             Denoばた会議
-          </a>」というオンラインイベントを行なっています。 どなたでも参加できますので、気軽に覗いてみてください。
+          </a>
+          」というオンラインイベントを行なっています。
+          どなたでも参加できますので、気軽に覗いてみてください。
         </p>
       </div>
 
@@ -79,24 +84,24 @@ function Introduction() {
 function Denobata() {
   return (
     <div>
-      {latest &&
-        (
-          <div class={tw`md:flex items-center`}>
-            <div>
-              <a href={latest.event_url} tabIndex={-1}>
-                <img
-                  class={tw`w-full`}
-                  src="/denobata-title.png"
-                  alt="denoばた会議タイトルロゴ"
-                />
-              </a>
-              <a href={latest.event_url}>
-                <h2
-                  class={tw`text-xl font-bold text-center hover:text-underline`}
-                >
-                  {latest.title}
-                </h2>
-              </a>
+      {latest && (
+        <div class={tw`md:flex items-center`}>
+          <div>
+            <a href={latest.event_url} tabIndex={-1}>
+              <img
+                class={tw`w-full`}
+                src="/denobata-title.png"
+                alt="denoばた会議タイトルロゴ"
+              />
+            </a>
+            <a href={latest.event_url}>
+              <h2
+                class={tw`text-xl font-bold text-center hover:text-underline`}
+              >
+                {latest.title}
+              </h2>
+            </a>
+            {latest.started_at && (
               <div class={tw`text-center mt-4`}>
                 <span class={tw`text-xl`}>
                   {toDateStr(new Date(latest.started_at))}
@@ -108,24 +113,25 @@ function Denobata() {
                   {toTimeStr.format(new Date(latest.started_at))}〜
                 </p>
               </div>
-              <div class={tw`mt-4 text-center`}>
-                <a
-                  class={tw`inline-block px-16 py-3 no-underline border-2 border-black rounded hover:bg-gray-100 hover:underline shadow-md`}
-                  href={latest.event_url}
-                >
-                  参加登録
-                </a>
-              </div>
-            </div>
-            <div>
-              <img
-                class={tw`w-full`}
-                src="/denobata-illust.png"
-                alt="denoばた会議イメージ図"
-              />
+            )}
+            <div class={tw`mt-4 text-center`}>
+              <a
+                class={tw`inline-block px-16 py-3 no-underline border-2 border-black rounded hover:bg-gray-100 hover:underline shadow-md`}
+                href={latest.event_url}
+              >
+                参加登録
+              </a>
             </div>
           </div>
-        )}
+          <div>
+            <img
+              class={tw`w-full`}
+              src="/denobata-illust.png"
+              alt="denoばた会議イメージ図"
+            />
+          </div>
+        </div>
+      )}
     </div>
   );
 }
@@ -154,16 +160,11 @@ function Contents() {
                   {content.title}
                 </a>{" "}
                 by{" "}
-                <a
-                  href={content.authorUrl}
-                  class={tw`hover:text-underline`}
-                >
+                <a href={content.authorUrl} class={tw`hover:text-underline`}>
                   {content.author}
                 </a>
               </div>
-              <div class={tw`pt-2 text-gray-800`}>
-                {content.description}
-              </div>
+              <div class={tw`pt-2 text-gray-800`}>{content.description}</div>
             </div>
           </div>
         ))}
@@ -196,9 +197,7 @@ export default function Home() {
           </li>
         </ul>
 
-        <p class={tw`mt-4`}>
-          © Deno Japan Users Group some rights reserved.
-        </p>
+        <p class={tw`mt-4`}>© Deno Japan Users Group some rights reserved.</p>
       </footer>
     </div>
   );
