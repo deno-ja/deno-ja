@@ -1,4 +1,4 @@
-const json: { events: Event[] } = await(
+const json: { events: Event[] } = await (
   await fetch("https://connpass.com/api/v1/event/?series_id=7931")
 ).json();
 
