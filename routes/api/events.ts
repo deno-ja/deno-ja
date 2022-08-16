@@ -1,21 +1,17 @@
-interface Event {
-  event_id: number;
+export interface ConnpassEvent {
   title: string;
-  catch: string;
-  started_at: string;
-  ended_at: string;
-  limit: number;
-  event_type: string;
-  accepted: number;
-  waiting: number;
-  updated_at: string;
   event_url: string;
-  place: string;
-  address: string;
+  started_at?: string;
 }
 
-export async function getConnpassEvent(): Promise<Event[]> {
-  const json = await (await fetch("https://connpass.com/api/v1/event/?series_id=7931"))
-    .json();
+export async function getConnpassEvent(): Promise<ConnpassEvent[]> {
+  let json: any;
+  try {
+    json =
+      await (await fetch("https://connpass.com/api/v1/event/?series_id=7931"))
+        .json();
+  } catch (_) {
+    return [];
+  }
   return json.events;
 }
