@@ -45,7 +45,9 @@ function Introduction() {
       <img src="/denoja-logo.svg" class={tw`w-80`} alt="deno-jaのロゴ" />
       <p class={tw`text-xl text-gray-700`}>Deno Japan Users Group</p>
 
-      <div class={tw`mt-32 max-w-md text-gray-700 space-y-4`}>
+      <div
+        class={tw`mt-32 max-w-md text-gray-700 space-y-4 bg-white p-4 bg-opacity-90`}
+      >
         <p>
           deno-jaは、Denoの日本ユーザによるオンラインコミュニティです。 主にSlack上で情報共有や雑談などの交流を行なっています。
         </p>
@@ -175,13 +177,18 @@ function Contents() {
 export default function Home() {
   return (
     <div>
-      <Walk />
-
       <Head>
         <title>deno-ja | Deno Japan Users Group</title>
       </Head>
+      <div class={tw`relative overflow-hidden`}>
+        <Walk />
+
+        <div class={tw`p-4 pb-16 mx-auto max-w-screen-md space-y-32 relative`}>
+          <Introduction />
+        </div>
+      </div>
+
       <div class={tw`p-4 mx-auto max-w-screen-md space-y-32`}>
-        <Introduction />
         <Denobata />
       </div>
 

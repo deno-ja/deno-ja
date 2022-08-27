@@ -3,54 +3,103 @@ import { h } from "preact";
 import { tw } from "@twind";
 import { useEffect, useRef, useState } from "preact/hooks";
 
+interface DenoInstance {
+  x: number;
+  y: number;
+  direction: number;
+  index: number;
+}
+
+const width = 1200;
+const height = 1200;
+
 export default function Walk() {
-  const [index, setIndex] = useState(0);
-  const [direction, setDirection] = useState(0);
+  const [denos, setDenos] = useState<DenoInstance[]>([]);
+
+  useEffect(() => {
+    // add initial denos
+    const d = [];
+    for (let i = 0; i < 10; i++) {
+      d.push({
+        x: Math.floor(Math.random() * width),
+        y: Math.floor(Math.random() * height),
+        direction: Math.floor(Math.random() * 4),
+        index: i,
+      });
+    }
+    setDenos(d);
+  }, []);
 
   const interval = useRef(0);
   useEffect(() => {
     interval.current = setInterval(() => {
-      setIndex((index) => (index + 1) % 4);
-    }, 500);
+      setDenos((denos) => {
+        return denos.map((deno) => {
+          return {
+            ...deno,
+            index: (deno.index + 1) % 4,
+          };
+        });
+      });
+    }, 800);
     return () => clearInterval(interval.current);
   }, []);
 
   const directionInterval = useRef(0);
   useEffect(() => {
     directionInterval.current = setInterval(() => {
-      setDirection(Math.floor(Math.random() * 4));
-    }, 3000);
+      setDenos((denos) => {
+        return denos.map((deno) => {
+          if (Math.random() < 0.1) {
+            return {
+              ...deno,
+              direction: Math.floor(Math.random() * 4),
+            };
+          }
+
+          return {
+            ...deno,
+          };
+        });
+      });
+    }, 1000);
     return () => clearInterval(directionInterval.current);
   }, []);
 
-  const [denoX, setDenoX] = useState(0);
-  const [denoY, setDenoY] = useState(0);
   const animationInterval = useRef(0);
-  const speed = 0.5;
+  const speed = 0.2;
   const animate = () => {
-    let dx = 0;
-    let dy = 0;
-    switch (direction) {
-      case 0:
-        dx = 1;
-        dy = 1;
-        break;
-      case 1:
-        dx = 1;
-        dy = -1;
-        break;
-      case 2:
-        dx = -1;
-        dy = 1;
-        break;
-      case 3:
-        dx = -1;
-        dy = -1;
-        break;
-    }
+    setDenos((denos) => {
+      return denos.map((deno) => {
+        let dx = 0;
+        let dy = 0;
+        switch (deno.direction) {
+          case 0:
+            dx = 1;
+            dy = 1;
+            break;
+          case 1:
+            dx = 1;
+            dy = -1;
+            break;
+          case 2:
+            dx = -1;
+            dy = 1;
+            break;
+          case 3:
+            dx = -1;
+            dy = -1;
+            break;
+        }
 
-    setDenoX(denoX + dx * speed);
-    setDenoY(denoY + dy * speed);
+        return {
+          ...deno,
+          x: deno.x + dx * speed,
+          y: deno.y + dy * speed,
+        };
+      });
+    });
+
     animationInterval.current = requestAnimationFrame(animate);
   };
   useEffect(() => {
@@ -59,8 +108,19 @@ export default function Walk() {
   }, [animate]);
 
   return (
-    <svg width="600" height="400">
-      <Deno direction={direction} index={index} x={denoX} y={denoY} />
+    <svg
+      width={width}
+      height={height}
+      style="position: absolute; left: 0 ; top: 0; right:0 ;z-index: -1; width: 100%;"
+    >
+      {denos.slice().sort((a, b) => a.y - b.y).map((deno) => (
+        <Deno
+          direction={deno.direction}
+          index={deno.index}
+          x={deno.x}
+          y={deno.y}
+        />
+      ))}
     </svg>
   );
 }
@@ -79,8 +139,8 @@ function Deno(props: DenoProps) {
     <svg
       x={props.x}
       y={props.y}
-      width="80"
-      height="80"
+      width="120"
+      height="120"
       viewBox={viewBox}
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
