@@ -183,7 +183,9 @@ export default function Home() {
       <div class={tw`relative overflow-hidden`}>
         <Walk />
 
-        <div class={tw`p-4 pb-16 mx-auto max-w-screen-md space-y-32 relative`}>
+        <div
+          class={tw`p-4 pb-16 mb-16 mx-auto max-w-screen-md space-y-32 relative`}
+        >
           <Introduction />
         </div>
       </div>
