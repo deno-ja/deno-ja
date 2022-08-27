@@ -43,7 +43,9 @@ function Introduction() {
   return (
     <div class={tw`flex flex-col items-center mt-20`}>
       <img src="/denoja-logo.svg" class={tw`w-80`} alt="deno-jaのロゴ" />
-      <p class={tw`text-xl text-gray-700`}>Deno Japan Users Group</p>
+      <p class={tw`text-xl text-gray-700 bg-white bg-opacity-90 m-4`}>
+        Deno Japan Users Group
+      </p>
 
       <div
         class={tw`mt-32 max-w-md text-gray-700 space-y-4 bg-white p-4 bg-opacity-90`}
