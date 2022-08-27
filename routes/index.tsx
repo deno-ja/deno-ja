@@ -5,6 +5,7 @@ import { ConnpassEvent, getConnpassEvent } from "./api/events.ts";
 import { format } from "https://deno.land/std@0.152.0/datetime/mod.ts";
 import { contents } from "../data/contents.ts";
 import { Head } from "$fresh/src/runtime/head.ts";
+import Walk from "../islands/Walk.tsx";
 
 const latest: ConnpassEvent = (await getConnpassEvent())[0] ?? {
   title: "Denoばた会議 Monthly",
@@ -174,6 +175,8 @@ function Contents() {
 export default function Home() {
   return (
     <div>
+      <Walk />
+
       <Head>
         <title>deno-ja | Deno Japan Users Group</title>
       </Head>
