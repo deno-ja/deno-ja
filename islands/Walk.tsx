@@ -2,20 +2,12 @@
 import { h } from "preact";
 import { tw } from "@twind";
 import { useEffect, useRef, useState } from "preact/hooks";
-
-interface DenoInstance {
-  x: number;
-  y: number;
-  direction: number;
-  index: number;
-  color: string;
-}
-
+import { IS_BROWSER } from "$fresh/runtime.ts";
 const width = 1200;
 const height = 1200;
 
 export default function Walk() {
-  const [denos, setDenos] = useState<DenoInstance[]>([]);
+  const [denos, setDenos] = useState<DenoProps[]>([]);
 
   useEffect(() => {
     // add initial denos
@@ -27,6 +19,7 @@ export default function Walk() {
         direction: Math.floor(Math.random() * 4),
         index: i,
         color: `hsl(${Math.floor(Math.random() * 360)}, 100%, 90%)`,
+        isWalk: false,
       });
     }
     setDenos(d);
@@ -40,6 +33,7 @@ export default function Walk() {
           return {
             ...deno,
             index: (deno.index + 1) % 4,
+            isWalk: true,
           };
         });
       });
@@ -52,7 +46,7 @@ export default function Walk() {
     directionInterval.current = setInterval(() => {
       setDenos((denos) => {
         return denos.map((deno) => {
-          if (Math.random() < 0.1) {
+          if (Math.random() < 0.1 && deno.isWalk) {
             return {
               ...deno,
               direction: Math.floor(Math.random() * 4),
@@ -96,8 +90,8 @@ export default function Walk() {
 
         return {
           ...deno,
-          x: (deno.x + dx * speed) % width,
-          y: (deno.y + dy * speed) % height,
+          x: deno.isWalk ? (deno.x + dx * speed) % width : deno.x,
+          y: deno.isWalk ? (deno.y + dy * speed) % height : deno.y,
         };
       });
     });
@@ -122,6 +116,7 @@ export default function Walk() {
           x={deno.x}
           y={deno.y}
           color={deno.color}
+          isWalk={deno.isWalk}
         />
       ))}
     </svg>
@@ -134,6 +129,7 @@ interface DenoProps {
   index: number;
   direction: number;
   color: string;
+  isWalk: boolean;
 }
 
 function Deno(props: DenoProps) {
