@@ -1,6 +1,4 @@
-/** @jsx h */
-import { h } from "preact";
-import { tw } from "@twind";
+import { tw } from "twind";
 import { ConnpassEvent, getConnpassEvent } from "./api/events.ts";
 import { format } from "https://deno.land/std@0.152.0/datetime/mod.ts";
 import { contents } from "../data/contents.ts";
@@ -41,15 +39,13 @@ const remainStr = (date: Date) => {
 
 function Introduction() {
   return (
-    <div class={tw`flex flex-col items-center mt-20`}>
-      <img src="/denoja-logo.svg" class={tw`w-80`} alt="deno-jaのロゴ" />
-      <p class={tw`text-xl text-gray-700 bg-white bg-opacity-90 m-4`}>
+    <div class="flex flex-col items-center mt-20">
+      <img src="/denoja-logo.svg" class="w-80" alt="deno-jaのロゴ" />
+      <p class="text-xl text-gray-700 bg-white bg-opacity-90 m-4">
         Deno Japan Users Group
       </p>
 
-      <div
-        class={tw`mt-32 max-w-md text-gray-700 space-y-4 bg-white p-4 bg-opacity-90`}
-      >
+      <div class="mt-32 max-w-md text-gray-700 space-y-4 bg-white p-4 bg-opacity-90">
         <p>
           deno-jaは、Denoの日本ユーザによるオンラインコミュニティです。 主にSlack上で情報共有や雑談などの交流を行なっています。
         </p>
@@ -58,7 +54,7 @@ function Introduction() {
           また、月に一回「
           <a
             href="https://deno-ja.connpass.com/"
-            class={tw`font-bold text-center hover:text-underline`}
+            class="font-bold text-center hover:text-underline"
           >
             Denoばた会議
           </a>
@@ -66,15 +62,15 @@ function Introduction() {
         </p>
       </div>
 
-      <div class={tw`mt-12 flex flex-col md:flex-row text-center gap-6`}>
+      <div class="mt-12 flex flex-col md:flex-row text-center gap-6">
         <a
-          class={tw`block w-48 px-6 py-3 no-underline bg-green-100 border-2 border-black rounded hover:bg-green-200 hover:underline shadow-md`}
+          class="block w-48 px-6 py-3 no-underline bg-green-100 border-2 border-black rounded hover:bg-green-200 hover:underline shadow-md"
           href="https://zenn.dev/uki00a/books/effective-deno/viewer/what-is-deno"
         >
           Deno とは？
         </a>
         <a
-          class={tw`block w-48 px-6 py-3 no-underline bg-white border-2 border-black rounded hover:bg-gray-100 hover:underline shadow-md`}
+          class="block w-48 px-6 py-3 no-underline bg-white border-2 border-black rounded hover:bg-gray-100 hover:underline shadow-md"
           href="https://scrapbox.io/deno-ja/Slack%E3%81%AE%E5%8F%82%E5%8A%A0%E6%96%B9%E6%B3%95"
         >
           Slack に参加する
@@ -88,38 +84,36 @@ function Denobata() {
   return (
     <div>
       {latest && (
-        <div class={tw`md:flex items-center`}>
+        <div class="md:flex items-center">
           <div>
             <a href={latest.event_url} tabIndex={-1}>
               <img
-                class={tw`w-full`}
+                class="w-full"
                 src="/denobata-title.png"
                 alt="denoばた会議タイトルロゴ"
               />
             </a>
             <a href={latest.event_url}>
-              <h2
-                class={tw`text-xl font-bold text-center hover:text-underline`}
-              >
+              <h2 class="text-xl font-bold text-center hover:text-underline">
                 {latest.title}
               </h2>
             </a>
             {latest.started_at && (
-              <div class={tw`text-center mt-4`}>
-                <span class={tw`text-xl`}>
+              <div class="text-center mt-4">
+                <span class="text-xl">
                   {toDateStr(new Date(latest.started_at))}
                 </span>
-                <span class={tw`ml-2 text-green-600`}>
+                <span class="ml-2 text-green-600">
                   {remainStr(new Date(latest.started_at))}
                 </span>
-                <p class={tw`text-gray-500 mx-2 text-center`}>
+                <p class="text-gray-500 mx-2 text-center">
                   {toTimeStr.format(new Date(latest.started_at))}〜
                 </p>
               </div>
             )}
-            <div class={tw`mt-4 text-center`}>
+            <div class="mt-4 text-center">
               <a
-                class={tw`inline-block px-16 py-3 no-underline border-2 border-black rounded hover:bg-gray-100 hover:underline shadow-md`}
+                class="inline-block px-16 py-3 no-underline border-2 border-black rounded hover:bg-gray-100 hover:underline shadow-md"
                 href={latest.event_url}
               >
                 参加登録
@@ -128,7 +122,7 @@ function Denobata() {
           </div>
           <div>
             <img
-              class={tw`w-full`}
+              class="w-full"
               src="/denobata-illust.png"
               alt="denoばた会議イメージ図"
             />
@@ -141,14 +135,14 @@ function Denobata() {
 
 function Contents() {
   return (
-    <div class={tw`bg-gray-100 px-8 py-16 mt-20`}>
-      <h2 class={tw`text-3xl text-center text-gray-400`}>
+    <div class="bg-gray-100 px-8 py-16 mt-20">
+      <h2 class="text-3xl text-center text-gray-400">
         Contents by deno-ja
       </h2>
 
-      <div class={tw`max-w-screen-md mx-auto space-y-10 mt-10`}>
+      <div class="max-w-screen-md mx-auto space-y-10 mt-10">
         {contents.map((content) => (
-          <div class={tw`flex gap-4`}>
+          <div class="flex gap-4">
             <div
               class={tw`inline-block p-3 rounded-full h-12 w-12 ${content.class}`}
             >
@@ -158,16 +152,16 @@ function Contents() {
               <div>
                 <a
                   href={content.href}
-                  class={tw`font-bold hover:text-underline`}
+                  class="font-bold hover:text-underline"
                 >
                   {content.title}
                 </a>{" "}
                 by{" "}
-                <a href={content.authorUrl} class={tw`hover:text-underline`}>
+                <a href={content.authorUrl} class="hover:text-underline">
                   {content.author}
                 </a>
               </div>
-              <div class={tw`pt-2 text-gray-800`}>{content.description}</div>
+              <div class="pt-2 text-gray-800">{content.description}</div>
             </div>
           </div>
         ))}
@@ -182,34 +176,32 @@ export default function Home() {
       <Head>
         <title>deno-ja | Deno Japan Users Group</title>
       </Head>
-      <div class={tw`relative overflow-hidden`}>
+      <div class="relative overflow-hidden">
         <Walk />
 
-        <div
-          class={tw`p-4 pb-16 mb-16 mx-auto max-w-screen-md space-y-32 relative`}
-        >
+        <div class="p-4 pb-16 mb-16 mx-auto max-w-screen-md space-y-32 relative">
           <Introduction />
         </div>
       </div>
 
-      <div class={tw`p-4 mx-auto max-w-screen-md space-y-32`}>
+      <div class="p-4 mx-auto max-w-screen-md space-y-32">
         <Denobata />
       </div>
 
       <Contents />
 
-      <footer class={tw`p-12 max-w-screen-md mx-auto text-center`}>
-        <ul class={tw`flex gap-4 justify-center`}>
-          <li class={tw`font-bold hover:text-underline`}>
+      <footer class="p-12 max-w-screen-md mx-auto text-center">
+        <ul class="flex gap-4 justify-center">
+          <li class="font-bold hover:text-underline">
             <a href="https://deno.land/">Deno公式</a>
           </li>
 
-          <li class={tw`font-bold hover:text-underline`}>
+          <li class="font-bold hover:text-underline">
             <a href="https://github.com/deno-ja/deno-ja">Source</a>
           </li>
         </ul>
 
-        <p class={tw`mt-4`}>© Deno Japan Users Group some rights reserved.</p>
+        <p class="mt-4">© Deno Japan Users Group some rights reserved.</p>
       </footer>
     </div>
   );
