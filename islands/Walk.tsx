@@ -1,6 +1,3 @@
-/** @jsx h */
-import { h } from "preact";
-import { tw } from "@twind";
 import { useEffect, useRef, useState } from "preact/hooks";
 import WalkDeno, { DenoProps } from "./WalkDeno.tsx";
 const width = 1200;
@@ -107,7 +104,7 @@ export default function Walk() {
     <svg
       width={width}
       height={height}
-      class={tw`absolute top-0 left-0 w-full h-full text-blue-900`}
+      class="absolute top-0 left-0 w-full h-full text-blue-900"
     >
       {denos.slice().sort((a, b) => a.y - b.y).map((deno) => (
         <WalkDeno

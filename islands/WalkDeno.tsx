@@ -1,6 +1,3 @@
-/** @jsx h */
-import { h } from "preact";
-
 export interface DenoProps {
   x: number;
   y: number;
