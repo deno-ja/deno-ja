@@ -4,6 +4,7 @@ import { format } from "https://deno.land/std@0.152.0/datetime/mod.ts";
 import { contents } from "../data/contents.ts";
 import { Head } from "$fresh/src/runtime/head.ts";
 import Walk from "../islands/Walk.tsx";
+import Showcase from "../components/Showcase.tsx";
 
 const latest: ConnpassEvent = (await getConnpassEvent())[0] ?? {
   title: "Denoばた会議 Monthly",
@@ -189,6 +190,8 @@ export default function Home() {
       </div>
 
       <Contents />
+
+      <Showcase />
 
       <footer class="p-12 max-w-screen-md mx-auto text-center">
         <ul class="flex gap-4 justify-center">
