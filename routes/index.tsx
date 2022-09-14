@@ -1,5 +1,6 @@
 import { tw } from "twind";
 import { ConnpassEvent, getConnpassEvent } from "./api/events.ts";
+import { getProjects } from "./api/showcase.ts";
 import { format } from "https://deno.land/std@0.152.0/datetime/mod.ts";
 import { contents } from "../data/contents.ts";
 import { Head } from "$fresh/src/runtime/head.ts";
@@ -10,6 +11,8 @@ const latest: ConnpassEvent = (await getConnpassEvent())[0] ?? {
   title: "Denoばた会議 Monthly",
   event_url: "https://deno-ja.connpass.com/",
 };
+
+const projects = await getProjects();
 
 const day = ["日", "月", "火", "水", "木", "金", "土"];
 
@@ -191,7 +194,7 @@ export default function Home() {
 
       <Contents />
 
-      <Showcase />
+      <Showcase projects={projects} />
 
       <footer class="p-12 max-w-screen-md mx-auto text-center">
         <ul class="flex gap-4 justify-center">
