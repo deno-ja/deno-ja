@@ -1,18 +1,11 @@
-import projects from "https://raw.githubusercontent.com/deno-ja/showcase/main/showcase.json" assert {
-  type: "json",
-};
 import GitHub from "tabler-icons/brand-github.tsx";
+import { Project } from "../routes/api/showcase.ts";
 
-interface Project {
-  title: string;
-  link: string;
-  github: string;
-  image: string;
-  description: string;
-  tags: string[];
+interface ShowcaseProps {
+  projects: Project[];
 }
 
-export default function Home() {
+export default function Showcase(props: ShowcaseProps) {
   return (
     <>
       <div class="max-w-screen-lg mx-auto my-16">
@@ -21,11 +14,16 @@ export default function Home() {
         </h2>
 
         <div>
-          <Projects items={projects} />
+          <Projects items={props.projects} />
         </div>
 
-        <p class="mt-8 inline-block text-center text-blue-500 hover:underline">
-          <a href="https://github.com/deno-ja/showcase">サイトの追加はこちらから</a>
+        <p class="p-4 mt-8 text-center">
+          <a
+            class="text-blue-500 hover:underline"
+            href="https://github.com/deno-ja/showcase"
+          >
+            サイトの追加はこちらから
+          </a>
         </p>
       </div>
     </>
@@ -39,7 +37,7 @@ interface ProjectProps {
 export function Projects(props: ProjectProps) {
   return (
     <div
-      class={`pt-8 grid grid-cols-1 md:grid-cols-3 items-center`}
+      class={`p-4 pt-8 grid grid-cols-1 md:grid-cols-3 items-start gap-8`}
     >
       {props.items.map((project) => (
         <div class="w-full max-w-sm mx-auto group">
