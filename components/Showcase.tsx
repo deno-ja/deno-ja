@@ -17,8 +17,13 @@ export default function Showcase(props: ShowcaseProps) {
           <Projects items={props.projects} />
         </div>
 
-        <p class="mt-8 inline-block text-center text-blue-500 hover:underline">
-          <a href="https://github.com/deno-ja/showcase">サイトの追加はこちらから</a>
+        <p class="p-4 mt-8 text-center">
+          <a
+            class="text-blue-500 hover:underline"
+            href="https://github.com/deno-ja/showcase"
+          >
+            サイトの追加はこちらから
+          </a>
         </p>
       </div>
     </>
@@ -32,7 +37,7 @@ interface ProjectProps {
 export function Projects(props: ProjectProps) {
   return (
     <div
-      class={`pt-8 grid grid-cols-1 md:grid-cols-3 items-center`}
+      class={`p-4 pt-8 grid grid-cols-1 md:grid-cols-3 items-start gap-8`}
     >
       {props.items.map((project) => (
         <div class="w-full max-w-sm mx-auto group">
