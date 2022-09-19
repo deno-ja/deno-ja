@@ -1,5 +1,5 @@
 import GitHub from "tabler-icons/brand-github.tsx";
-import { Project } from "../routes/api/showcase.ts";
+import { Project } from "../lib/showcase.ts";
 
 interface ShowcaseProps {
   projects: Project[];

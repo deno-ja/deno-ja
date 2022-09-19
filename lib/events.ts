@@ -3,7 +3,7 @@ export interface ConnpassEvent {
   event_url: string;
   started_at?: string;
 }
-
+import { HandlerContext } from "$fresh/server.ts";
 const timeout = 2000; // 2000ms
 
 export async function getConnpassEvent(): Promise<ConnpassEvent[]> {
@@ -28,3 +28,7 @@ export async function getConnpassEvent(): Promise<ConnpassEvent[]> {
   }
   return json.events;
 }
+export const handler = (_req: Request, _ctx: HandlerContext): Response => {
+  const body = "";
+  return new Response(body);
+};

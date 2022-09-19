@@ -6,7 +6,7 @@ export interface Project {
   description: string;
   tags: string[];
 }
-
+import { HandlerContext } from "$fresh/server.ts";
 export async function getProjects(): Promise<Project[]> {
   try {
     const res = await fetch(
@@ -18,3 +18,7 @@ export async function getProjects(): Promise<Project[]> {
   }
   return [];
 }
+export const handler = (_req: Request, _ctx: HandlerContext): Response => {
+  const body = "";
+  return new Response(body);
+};

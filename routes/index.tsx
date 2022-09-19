@@ -1,6 +1,6 @@
 import { tw } from "twind";
-import { ConnpassEvent, getConnpassEvent } from "./api/events.ts";
-import { getProjects } from "./api/showcase.ts";
+import { ConnpassEvent, getConnpassEvent } from "../lib/events.ts";
+import { getProjects } from "../lib/showcase.ts";
 import { format } from "https://deno.land/std@0.152.0/datetime/mod.ts";
 import { contents } from "../data/contents.ts";
 import { Head } from "$fresh/src/runtime/head.ts";
