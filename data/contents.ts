@@ -14,7 +14,8 @@ export const contents: Content[] = [
     title: "Effective Deno",
     icon: Icons.Academic,
     href: "https://zenn.dev/uki00a/books/effective-deno",
-    description: `Denoを有効に活用するためのノウハウを一通り得られる包括的なドキュメントです。`,
+    description:
+      `Denoを有効に活用するためのノウハウを一通り得られる包括的なドキュメントです。`,
     author: "uki00a",
     authorUrl: "https://twitter.com/uki00a",
     class: "bg-green-200 text-green-700",
@@ -32,7 +33,8 @@ export const contents: Content[] = [
     title: "deno-ja Scrapbox",
     icon: Icons.Pencil,
     href: "https://scrapbox.io/deno-ja/",
-    description: `Denoに関してなんでもまとめているWiki的なページです。deno-jaコミュニティで管理されています。`,
+    description:
+      `Denoに関してなんでもまとめているWiki的なページです。deno-jaコミュニティで管理されています。`,
     author: "deno-ja",
     class: "bg-yellow-200 text-yellow-700",
   },
