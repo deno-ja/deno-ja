@@ -51,7 +51,8 @@ function Introduction() {
 
       <div class="mt-32 max-w-md text-gray-700 space-y-4 bg-white p-4 bg-opacity-90">
         <p>
-          deno-jaは、Denoの日本ユーザによるオンラインコミュニティです。 主にSlack上で情報共有や雑談などの交流を行なっています。
+          deno-jaは、Denoの日本ユーザによるオンラインコミュニティです。
+          主にSlack上で情報共有や雑談などの交流を行なっています。
         </p>
 
         <p>
@@ -62,7 +63,8 @@ function Introduction() {
           >
             Denoばた会議
           </a>
-          」というオンラインイベントを行なっています。 どなたでも参加できますので、気軽に覗いてみてください。
+          」というオンラインイベントを行なっています。
+          どなたでも参加できますので、気軽に覗いてみてください。
         </p>
       </div>
 
