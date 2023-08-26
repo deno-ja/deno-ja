@@ -178,39 +178,41 @@ function Contents() {
 
 export default function Home() {
   return (
-    <div>
+    <html lang="ja">
       <Head>
         <title>deno-ja | Deno Japan Users Group</title>
       </Head>
-      <div class="relative overflow-hidden">
-        <Walk />
+      <body>
+          <div class="relative overflow-hidden">
+            <Walk />
 
-        <div class="p-4 pb-16 mb-16 mx-auto max-w-screen-md space-y-32 relative">
-          <Introduction />
-        </div>
-      </div>
+            <div class="p-4 pb-16 mb-16 mx-auto max-w-screen-md space-y-32 relative">
+              <Introduction />
+            </div>
+          </div>
 
-      <div class="p-4 mx-auto max-w-screen-md space-y-32">
-        <Denobata />
-      </div>
+          <div class="p-4 mx-auto max-w-screen-md space-y-32">
+            <Denobata />
+          </div>
 
-      <Contents />
+          <Contents />
 
-      <Showcase projects={projects} />
+          <Showcase projects={projects} />
 
-      <footer class="p-12 max-w-screen-md mx-auto text-center">
-        <ul class="flex gap-4 justify-center">
-          <li class="font-bold hover:text-underline">
-            <a href="https://deno.land/">Deno公式</a>
-          </li>
+          <footer class="p-12 max-w-screen-md mx-auto text-center">
+            <ul class="flex gap-4 justify-center">
+              <li class="font-bold hover:text-underline">
+                <a href="https://deno.land/">Deno公式</a>
+              </li>
 
-          <li class="font-bold hover:text-underline">
-            <a href="https://github.com/deno-ja/deno-ja">Source</a>
-          </li>
-        </ul>
+              <li class="font-bold hover:text-underline">
+                <a href="https://github.com/deno-ja/deno-ja">Source</a>
+              </li>
+            </ul>
 
-        <p class="mt-4">© Deno Japan Users Group some rights reserved.</p>
-      </footer>
-    </div>
+            <p class="mt-4">© Deno Japan Users Group some rights reserved.</p>
+          </footer>
+      </body>
+    </html>
   );
 }
