@@ -12,8 +12,4 @@ import twindConfig from "./twind.config.ts";
 
 await start(manifest, {
   plugins: [twindPlugin(twindConfig)],
-  render: (ctx, render) => {
-    ctx.lang = "ja";
-    render();
-  },
 });
