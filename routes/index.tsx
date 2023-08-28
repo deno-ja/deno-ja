@@ -61,6 +61,28 @@ export default function Home() {
           </div>
         </div>
 
+        <div class="p-4 mx-auto max-w-screen-md space-y-8 flex flex-col items-center my-24">
+          <img
+            src="/logo_denofest.svg"
+            class="h-32 mx-auto"
+            alt="Deno Fest presented by toranoana.deno"
+          />
+          <div class="flex flex-col items-center">
+            <div class="text-2xl">
+              2023.10.20 13:00
+            </div>
+            <div>
+              TOKYO Akihabara
+            </div>
+            <a
+              class="px-16 py-3 mt-4 bg-blue-500 text-white rounded hover:bg-blue-600"
+              href="https://deno-fest-2023.deno.dev/"
+            >
+              特設サイトへ
+            </a>
+          </div>
+        </div>
+
         <div class="p-4 mx-auto max-w-screen-md space-y-32">
           <Denobata />
         </div>
