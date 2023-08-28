@@ -1,4 +1,4 @@
-import * as Icons from "../components/Icons.tsx";
+import * as Icons from "@/components/Icons.tsx";
 
 interface Content {
   title: string;
