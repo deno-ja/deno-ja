@@ -11,7 +11,7 @@
   "lock": false,
   "imports": {
     "@/": "./",
-    "$fresh/": "https://deno.land/x/fresh@1.4.2/",
+    "$fresh/": "https://deno.land/x/fresh@1.4.3/",
     "preact": "https://esm.sh/preact@10.15.1",
     "preact/": "https://esm.sh/preact@10.15.1/",
     "preact-render-to-string": "https://esm.sh/*preact-render-to-string@6.2.1",
@@ -23,11 +23,18 @@
   },
   "lint": {
     "rules": {
-      "tags": ["fresh", "recommended"]
+      "tags": [
+        "fresh",
+        "recommended"
+      ]
     },
-    "exclude": ["_fresh"]
+    "exclude": [
+      "_fresh"
+    ]
   },
   "fmt": {
-    "exclude": ["_fresh"]
+    "exclude": [
+      "_fresh"
+    ]
   }
 }
